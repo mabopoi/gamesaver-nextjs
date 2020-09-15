@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { Stack } from '@chakra-ui/core';
 import Navbar from '../components/Navbar';
+import Introduction from '../components/Introduction';
+import Description from '../components/Description';
 
 const Home = () => {
   return (
@@ -11,6 +13,8 @@ const Home = () => {
       </Head>
       <Stack>
         <Navbar />
+        <Introduction />
+        <Description />
       </Stack>
     </>
   );
