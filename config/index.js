@@ -6,4 +6,4 @@ const config = {
   cookieSecret: process.env.COOKIE_SECRET,
 };
 
-export default config;
+module.exports = { config };
