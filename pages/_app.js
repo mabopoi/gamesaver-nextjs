@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/core';
 import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
+  //if (typeof process.versions === 'undefined') process.versions = {}; (possible fix for dotenv 3.0.0 incompatibility)
   return (
     <ThemeProvider>
       <Layout>

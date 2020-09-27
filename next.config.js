@@ -5,9 +5,12 @@ const Dotenv = require('dotenv-webpack');
 dotenv.config();
 
 module.exports = {
+  env: { EXAMPLE: 'helloWorld' }, //solves environment var on client side problem
   webpack: (config) => {
     config.plugins = config.plugins || [];
-
+    config.node = {
+      fs: 'empty', //solves 'fs not found' problem
+    };
     config.plugins = [
       ...config.plugins,
 
