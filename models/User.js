@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: {
-    type: Object,
+    type: String,
     required: true,
   },
   googleID: String,

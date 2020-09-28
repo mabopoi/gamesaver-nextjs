@@ -7,17 +7,17 @@ function getById(id) {
 }
 
 function getByGoogleId(id) {
-  const foundUser = UserModel.findOne({ googleId: id });
+  const foundUser = UserModel.findOne({ googleID: id });
 
   return foundUser;
 }
 
 function post(data) {
-  const { name, googleId, twitterId } = data;
+  const { name, googleID, twitterID } = data;
   const newUser = new UserModel({
     name,
-    googleId: googleId ?? '',
-    twitterId: twitterId ?? '',
+    googleID: googleID ?? '',
+    twitterID: twitterID ?? '',
   });
 
   newUser.save();

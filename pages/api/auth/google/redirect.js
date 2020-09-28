@@ -6,9 +6,10 @@ const handler = nextConnect();
 
 handler.use(auth);
 handler.get(
-  passport.authenticate('google', (req, res) => {
-    res.send(req.user);
-  })
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    res.redirect('/');
+  }
 );
 
 export default (req, res) => handler.apply(req, res);
