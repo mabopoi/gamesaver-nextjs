@@ -5,6 +5,15 @@ const Dotenv = require('dotenv-webpack');
 dotenv.config();
 
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/api/auth/google/redirect',
+        destination: '/',
+        permanent: false,
+      },
+    ];
+  },
   env: { EXAMPLE: 'helloWorld' }, //solves environment var on client side problem
   webpack: (config) => {
     config.plugins = config.plugins || [];
