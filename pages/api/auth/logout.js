@@ -5,8 +5,11 @@ const handler = nextConnect();
 
 handler.use(auth);
 handler.get((req, res) => {
-  req.logout();
+  console.log(req.cookies);
+  console.log(req.session); //empty object
+  console.log(req.user); //undefined
+  req.logOut();
   res.status(204).end();
 });
 
-export default (req, res) => handler.apply(req, res);
+export default handler;
