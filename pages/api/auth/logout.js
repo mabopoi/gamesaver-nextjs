@@ -5,10 +5,7 @@ const handler = nextConnect();
 
 handler.use(auth);
 handler.get((req, res) => {
-  console.log(req.cookies);
-  console.log(req.session); //empty object
-  console.log(req.user); //undefined
-  req.logOut();
+  req.logout();
   res.status(204).end();
 });
 

@@ -1,9 +1,9 @@
 import nextConnect from 'next-connect';
-import middleware from '../../../middlewares/database';
+import database from '../../../middlewares/database';
 import GameController from '../../../controllers/GameController';
 
 const handler = nextConnect();
-handler.use(middleware);
+handler.use(database);
 
 handler.get(async (req, res) => {
   return GameController.get(req, res);
