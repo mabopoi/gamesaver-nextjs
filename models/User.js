@@ -12,7 +12,6 @@ const userSchema = new Schema({
   },
   password: String,
   googleID: String,
-  twitterID: String,
 });
 
 export default mongoose.models && mongoose.models.users

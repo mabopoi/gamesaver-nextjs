@@ -32,7 +32,6 @@ async function post(data) {
     email,
     password: (await hashPassword(password)) ?? '',
     googleID: googleID ?? '',
-    twitterID: twitterID ?? '',
   });
 
   newUser.save();

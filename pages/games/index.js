@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Searchbar from '../../components/Searchbar';
 import { Stack, Heading } from '@chakra-ui/core';
 import GameList from '../../components/GameList';
+import UserContext from '../../context/User';
 
 const GameSection = () => {
+  const user = useContext(UserContext);
   const [filter, setFilter] = useState('');
 
   const handleChange = (e) => {
@@ -11,7 +13,7 @@ const GameSection = () => {
   };
   return (
     <Stack minHeight='70vh'>
-      <Heading marginLeft={4}>/Username/'s games</Heading>
+      <Heading marginLeft={4}>{user.name}'s games</Heading>
       <Searchbar onChange={handleChange} />
       <GameList filter={filter} />
     </Stack>
