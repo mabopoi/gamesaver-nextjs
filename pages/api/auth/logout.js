@@ -3,9 +3,8 @@ import auth from '../../../middlewares/auth';
 
 const handler = nextConnect();
 
-handler.use(auth);
-handler.get((req, res) => {
-  req.logout();
+handler.use(auth).get((req, res) => {
+  req.logOut();
   res.status(204).end();
 });
 

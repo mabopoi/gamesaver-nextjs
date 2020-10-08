@@ -26,7 +26,7 @@ async function hashPassword(password, saltRounds = 10) {
 }
 
 async function post(data) {
-  const { name, email, password, googleID, twitterID } = data;
+  const { name, email, password, googleID } = data;
   const newUser = new UserModel({
     name,
     email,

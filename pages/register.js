@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from '../components/Form';
 import { Stack, Heading } from '@chakra-ui/core';
 
-const register = () => {
+const Register = () => {
   const [data, setData] = useState({});
 
   const handleSubmit = (e) => {
@@ -30,4 +30,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

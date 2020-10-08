@@ -4,7 +4,7 @@ import database from '../../middlewares/database';
 
 const handler = nextConnect();
 handler.use(database);
-handler.post(async (req, res) => {
+handler.post((req, res) => {
   return UserController.post(req, res);
 });
 

@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Stack, Heading } from '@chakra-ui/core';
 import Form from '../components/Form';
-import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const Login = () => {
   const [data, setData] = useState({});
-  const router = useRouter();
-  console.log(data);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const login = await axios.post('http://localhost:3000/api/login', data);
 
     if (login.status == 200) {
-      router.push('/');
+      window.location.assign('/'); //refresh page automatically, not like router.push
     } else {
       console.log('error');
     }
