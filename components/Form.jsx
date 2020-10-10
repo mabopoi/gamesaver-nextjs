@@ -4,21 +4,26 @@ import {
   Button,
   Input,
   FormLabel,
+  FormHelperText,
   Stack,
   Heading,
+  Alert,
+  AlertIcon,
+  AlertTitle,
 } from '@chakra-ui/core';
 import Link from 'next/link';
 
 const Form = (props) => {
-  const { name, confirmPassword, onSubmit, onChange } = props;
+  const { name, confirmPassword, onSubmit, onChange, error } = props;
   return (
     <>
       <form onSubmit={onSubmit}>
-        <FormControl paddingBottom={4} textAlign='left'>
+        <FormControl paddingBottom={2} textAlign='left'>
           {name && (
             <FormControl>
               <FormLabel paddingTop={4}> Your name </FormLabel>
               <Input onChange={onChange} name='name' />
+              <FormHelperText> Minimum 2 characters </FormHelperText>
             </FormControl>
           )}
 
@@ -27,6 +32,7 @@ const Form = (props) => {
 
           <FormLabel paddingTop={4}>Password</FormLabel>
           <Input type='password' onChange={onChange} name='password' />
+          <FormHelperText> Minimum 8 characters </FormHelperText>
 
           {confirmPassword && (
             <FormControl>
@@ -38,7 +44,7 @@ const Form = (props) => {
               />
             </FormControl>
           )}
-          <Stack padding={5}>
+          <Stack padding={5} paddingBottom={3}>
             <Button
               type='submit'
               backgroundColor='green.300'
@@ -49,7 +55,15 @@ const Form = (props) => {
           </Stack>
         </FormControl>
       </form>
-      <Heading fontSize='md'>Or log in with Google</Heading>
+      {error && (
+        <Alert status='error'>
+          <AlertIcon />
+          <AlertTitle> {error} </AlertTitle>
+        </Alert>
+      )}
+      <Heading fontSize='md' paddingTop={3}>
+        Or log in with Google
+      </Heading>
       <Stack justifyContent='center' spacing={6} marginTop={4}>
         <Link href='/api/auth/google'>
           <Button

@@ -4,8 +4,16 @@ import database from '../../middlewares/database';
 
 const handler = nextConnect();
 handler.use(database);
-handler.post((req, res) => {
-  return UserController.post(req, res);
+handler.post(async (req, res) => {
+  const user = await UserController.getByEmail(req, res);
+
+  if (user) {
+    return res.status(202).json({
+      message: 'This email already has an account',
+    });
+  } else {
+    return UserController.post(req, res);
+  }
 });
 
 export default handler;

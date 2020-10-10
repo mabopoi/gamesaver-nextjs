@@ -1,5 +1,11 @@
 import UserService from '../services/UserService';
 
+async function getByEmail(req, res) {
+  const user = await UserService.getByEmail(req.body.email);
+
+  return user;
+}
+
 async function post(req, res) {
   const { body } = req;
 
@@ -35,6 +41,7 @@ async function login(req, res) {
 }
 
 export default {
+  getByEmail,
   post,
   login,
 };

@@ -1,5 +1,5 @@
 import UserModel from '../models/User';
-import bcrypt from 'bcrypt';
+import { hashPassword } from '../utils/hashPassword';
 
 function getById(id) {
   const foundUser = UserModel.findById(id);
@@ -19,12 +19,6 @@ function getByGoogleId(id) {
   return foundUser;
 }
 
-async function hashPassword(password, saltRounds = 10) {
-  return bcrypt.hash(password, saltRounds).then((hash) => {
-    return hash;
-  });
-}
-
 async function post(data) {
   const { name, email, password, googleID } = data;
   const newUser = new UserModel({
@@ -34,7 +28,7 @@ async function post(data) {
     googleID: googleID ?? '',
   });
 
-  newUser.save();
+  return newUser.save();
 }
 
 export default {
