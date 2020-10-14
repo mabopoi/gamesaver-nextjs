@@ -1,9 +1,8 @@
-import { Stack } from '@chakra-ui/core';
 import React from 'react';
-import { Text } from '@chakra-ui/core';
+import { Stack, Text } from '@chakra-ui/core';
 
 const Game = (props) => {
-  const { moves, opponent, result, userColor } = props.data;
+  const { moves, opponent, result, userColor, _id } = props.data;
   return (
     <Stack
       backgroundColor='teal.100'

@@ -12,7 +12,7 @@ const GameSection = () => {
     setFilter(e.target.value);
   };
   return (
-    <Stack minHeight='70vh'>
+    <Stack minHeight='70vh' textAlign='center'>
       <Heading marginLeft={4}>{user.name}'s games</Heading>
       <Searchbar onChange={handleChange} />
       <GameList filter={filter} />

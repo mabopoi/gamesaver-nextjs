@@ -19,7 +19,28 @@ function post(data) {
 
   return newGame.save();
 }
+
+function patch(body) {
+  const { _id, user, moves, opponent, date, userColor, result } = body;
+  const updatedData = { user, moves, opponent, date, userColor, result };
+
+  const updatedGame = GameModel.findByIdAndUpdate(_id, updatedData, {
+    new: true,
+  });
+
+  return updatedGame;
+}
+
+function eliminate(body) {
+  const { _id } = body;
+  const deletedGame = GameModel.findOneAndDelete(_id);
+
+  return deletedGame;
+}
+
 export default {
   get,
   post,
+  patch,
+  eliminate,
 };
