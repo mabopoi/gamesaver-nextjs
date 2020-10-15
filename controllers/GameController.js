@@ -6,6 +6,26 @@ async function get(req, res) {
   return res.json(games);
 }
 
+async function getByUser(req, res) {
+  const { user } = req;
+
+  if (user) {
+    const userGames = await GameService.getByUser(user._id);
+    console.log(userGames);
+    if (userGames.length !== 0) {
+      return res.json(userGames);
+    } else {
+      return res.status(200).json({
+        message: "You don't have any games yet",
+      });
+    }
+  } else {
+    return res.status(400).json({
+      message: 'Bad request',
+    });
+  }
+}
+
 async function post(req, res) {
   const { body } = req;
 
@@ -73,6 +93,7 @@ async function eliminate(req, res) {
 
 export default {
   get,
+  getByUser,
   post,
   patch,
   eliminate,

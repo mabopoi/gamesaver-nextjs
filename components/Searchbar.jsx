@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NewGameForm from './NewGameForm';
 import {
   InputGroup,
   InputLeftElement,
@@ -7,10 +8,6 @@ import {
   Stack,
   Button,
   Collapse,
-  FormControl,
-  FormLabel,
-  Radio,
-  RadioGroup,
 } from '@chakra-ui/core';
 
 const Searchbar = (props) => {
@@ -33,30 +30,7 @@ const Searchbar = (props) => {
         Add a game
       </Button>
       <Collapse isOpen={show} marginLeft={4}>
-        <form>
-          <FormControl>
-            <FormLabel>Moves</FormLabel>
-            <Input />
-            <FormLabel>Opponent</FormLabel>
-            <Input />
-            <FormLabel>Result</FormLabel>
-            <Input />
-            <FormLabel>Your color</FormLabel>
-            <RadioGroup>
-              <Radio variantColor='green' value='White'>
-                White pieces
-              </Radio>
-              <Radio variantColor='green' value='Black'>
-                Black pieces
-              </Radio>
-            </RadioGroup>
-            <FormLabel>Date</FormLabel>
-            <Input type='date' />
-          </FormControl>
-          <Stack justifyContent='right'>
-            <Button>Add</Button>
-          </Stack>
-        </form>
+        <NewGameForm />
       </Collapse>
     </Stack>
   );

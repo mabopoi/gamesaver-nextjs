@@ -3,11 +3,9 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const gameSchema = new Schema({
   user: {
-    // type: Schema.ObjectId,
-    // required: true,
-    // ref: 'user',
-    type: String,
+    type: Schema.ObjectId,
     required: true,
+    ref: 'users',
   },
   opponent: {
     type: String,

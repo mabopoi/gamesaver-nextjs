@@ -1,9 +1,14 @@
 import GameModel from '../models/Game';
 
 function get() {
-  const games = GameModel.find().exec();
+  const games = GameModel.find().limit(5).exec();
 
   return games;
+}
+
+function getByUser(userId) {
+  const userGames = GameModel.find({ user: userId }).exec();
+  return userGames;
 }
 
 function post(data) {
@@ -20,8 +25,8 @@ function post(data) {
   return newGame.save();
 }
 
-function patch(body) {
-  const { _id, user, moves, opponent, date, userColor, result } = body;
+function patch(data) {
+  const { _id, user, moves, opponent, date, userColor, result } = data;
   const updatedData = { user, moves, opponent, date, userColor, result };
 
   const updatedGame = GameModel.findByIdAndUpdate(_id, updatedData, {
@@ -31,8 +36,8 @@ function patch(body) {
   return updatedGame;
 }
 
-function eliminate(body) {
-  const { _id } = body;
+function eliminate(data) {
+  const { _id } = data;
   const deletedGame = GameModel.findOneAndDelete(_id);
 
   return deletedGame;
@@ -40,6 +45,7 @@ function eliminate(body) {
 
 export default {
   get,
+  getByUser,
   post,
   patch,
   eliminate,
