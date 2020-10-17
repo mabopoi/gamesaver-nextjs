@@ -11,7 +11,7 @@ async function getByUser(req, res) {
 
   if (user) {
     const userGames = await GameService.getByUser(user._id);
-    console.log(userGames);
+
     if (userGames.length !== 0) {
       return res.json(userGames);
     } else {
@@ -71,12 +71,12 @@ async function patch(req, res) {
 }
 
 async function eliminate(req, res) {
-  const { body } = req;
+  const { query } = req;
 
-  if (body._id) {
-    const deletedGame = await GameService.eliminate(body);
+  if (query._id) {
+    const deletedGame = await GameService.eliminate(query);
     if (deletedGame) {
-      res.status(201).json({
+      res.status(200).json({
         message: 'Game deleted',
       });
     } else {

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Stack } from '@chakra-ui/core';
+import { Stack, Heading } from '@chakra-ui/core';
 import Game from './Game';
 
 const GameList = (props) => {
   const { filter } = props;
-  const [games, setGames] = useState('');
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const gamesFound = await fetch('api/games');
+      const gamesFound = await fetch('api/games/user');
       const gamesJSON = await gamesFound.json();
       setGames(gamesJSON);
     };
@@ -17,7 +17,9 @@ const GameList = (props) => {
 
   return (
     <Stack>
-      {games &&
+      {games.message ? (
+        <Heading>{games.message}</Heading>
+      ) : (
         games
           .filter((game) => {
             const { moves, opponent, result, userColor } = game;
@@ -34,7 +36,8 @@ const GameList = (props) => {
           })
           .map((game) => {
             return <Game key={game._id} data={game} />;
-          })}
+          })
+      )}
     </Stack>
   );
 };

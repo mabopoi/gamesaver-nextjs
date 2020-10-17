@@ -16,7 +16,7 @@ const GameSection = () => {
 
   useEffect(() => {
     if (!isLogged) {
-      router.push('login');
+      // router.push('login');
     }
   }, []);
 
