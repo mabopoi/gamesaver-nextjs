@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Axios from 'axios';
+import { useRouter } from 'next/router';
+import UpdateGameForm from './UpdateGameForm';
 import {
   Stack,
   Text,
@@ -14,7 +16,10 @@ import {
 } from '@chakra-ui/core';
 
 const Game = (props) => {
-  const { moves, opponent, result, userColor, _id } = props.data;
+  const { moves, opponent, result, userColor, date, _id } = props.data;
+  const router = useRouter();
+  const [isUpdateOpen, setIsUpdateOpen] = useState(false);
+  const toggle = () => setIsUpdateOpen(!isUpdateOpen);
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
@@ -23,7 +28,7 @@ const Game = (props) => {
     onClose();
     const deletedGame = await Axios.delete(`api/games/${_id}`);
     if (deletedGame.status == 200) {
-      console.log('eliminado');
+      router.reload();
     }
   };
   return (
@@ -34,12 +39,17 @@ const Game = (props) => {
       paddingLeft={3}
       isInline
     >
-      <Stack>
-        <Text>Moves: {moves}</Text>
-        <Text>You played against: {opponent}</Text>
-        <Text>Result: {result}</Text>
-        <Text>Your color: {userColor}</Text>
-      </Stack>
+      {isUpdateOpen ? (
+        <UpdateGameForm data={props.data} />
+      ) : (
+        <Stack>
+          <Text>Moves: {moves}</Text>
+          <Text>You played against: {opponent}</Text>
+          <Text>Result: {result}</Text>
+          <Text>Your color: {userColor}</Text>
+          {date ? <Text> {date}</Text> : <Text> Unknown date</Text>}
+        </Stack>
+      )}
       <Stack>
         <IconButton
           icon='close'
@@ -73,7 +83,7 @@ const Game = (props) => {
           </AlertDialogContent>
         </AlertDialog>
 
-        <IconButton icon='edit' />
+        <IconButton icon='edit' onClick={toggle} />
       </Stack>
     </Stack>
   );

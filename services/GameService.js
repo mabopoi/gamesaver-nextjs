@@ -31,6 +31,7 @@ function patch(data) {
 
   const updatedGame = GameModel.findByIdAndUpdate(_id, updatedData, {
     new: true,
+    useFindAndModify: false, // deprecated without this option
   });
 
   return updatedGame;
@@ -38,7 +39,9 @@ function patch(data) {
 
 function eliminate(data) {
   const { _id } = data;
-  const deletedGame = GameModel.findOneAndDelete(_id);
+  const deletedGame = GameModel.findOneAndDelete(_id, {
+    useFindAndModify: false,
+  });
 
   return deletedGame;
 }

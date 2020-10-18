@@ -55,7 +55,7 @@ async function patch(req, res) {
     const updatedGame = await GameService.patch(body);
 
     if (updatedGame) {
-      res.status(201).json({
+      res.status(200).json({
         message: 'Game updated',
       });
     } else {
