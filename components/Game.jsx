@@ -5,6 +5,7 @@ import UpdateGameForm from './UpdateGameForm';
 import {
   Stack,
   Text,
+  Heading,
   Button,
   IconButton,
   AlertDialog,
@@ -38,19 +39,35 @@ const Game = (props) => {
       margin={4}
       paddingLeft={3}
       isInline
+      minWidth='300px'
+      marginRight={3}
     >
       {isUpdateOpen ? (
-        <UpdateGameForm data={props.data} />
+        <Stack margin={5}>
+          <UpdateGameForm data={props.data} />
+        </Stack>
       ) : (
-        <Stack>
-          <Text>Moves: {moves}</Text>
-          <Text>You played against: {opponent}</Text>
-          <Text>Result: {result}</Text>
-          <Text>Your color: {userColor}</Text>
+        <Stack minWidth='220px' marginTop={1} marginBottom={1}>
+          <Heading as='h5' as='u' size='sm'>
+            Moves
+          </Heading>
+          <Text>{moves}</Text>
+          <Heading as='h5' as='u' size='sm'>
+            Opponent
+          </Heading>
+          v<Text>{opponent}</Text>
+          <Heading as='h5' as='u' size='sm'>
+            Result
+          </Heading>
+          <Text>{result}</Text>
+          <Heading as='h5' as='u' size='sm'>
+            Your color
+          </Heading>
+          <Text>{userColor}</Text>
           {date ? <Text> {date}</Text> : <Text> Unknown date</Text>}
         </Stack>
       )}
-      <Stack>
+      <Stack margin={3}>
         <IconButton
           icon='close'
           variantColor='red'

@@ -34,8 +34,8 @@ async function login(req, res) {
       message: 'OK',
     });
   } else {
-    res.status(400).json({
-      message: 'Bad request',
+    res.status(202).json({
+      message: "Email and password don't match",
     });
   }
 }

@@ -16,7 +16,7 @@ const GameList = (props) => {
   }, []);
 
   return (
-    <Stack>
+    <Stack alignItems='center'>
       {games.message ? (
         <Heading>{games.message}</Heading>
       ) : (
