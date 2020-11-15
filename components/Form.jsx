@@ -28,10 +28,19 @@ const Form = (props) => {
           )}
 
           <FormLabel paddingTop={4}>Email</FormLabel>
-          <Input onChange={onChange} name='email' />
+          <Input
+            onChange={onChange}
+            name='email'
+            placeholder='example@test.com'
+          />
 
           <FormLabel paddingTop={4}>Password</FormLabel>
-          <Input type='password' onChange={onChange} name='password' />
+          <Input
+            type='password'
+            onChange={onChange}
+            name='password'
+            placeholder='12345'
+          />
           <FormHelperText> Minimum 8 characters </FormHelperText>
 
           {confirmPassword && (

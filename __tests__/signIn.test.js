@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, act, render } from '../jest.setup';
+import { fireEvent, act, render, waitFor } from '../jest.setup';
 import Form from '../components/Form';
 import Login from '../pages/login';
 
@@ -21,17 +21,19 @@ describe('SignIn process', () => {
       email: 'test@test.com',
       password: 'hola',
     };
-    const { getByText, getByLabelText } = render(<Login />);
-    const email = getByLabelText('Email');
-    const password = getByLabelText('Password');
+    const handleSubmit = jest.fn();
+    handleSubmit.mockReturnValue(window.location.assign('/'));
+    const { getByText, getByPlaceholderText } = render(<Login />);
+    const email = getByPlaceholderText('example@test.com');
+    const password = getByPlaceholderText('12345');
     const signInButton = getByText('Done');
 
-    await act(() => {
+    act(() => {
       fireEvent.change(email, { target: { value: expectedData.email } });
       fireEvent.change(password, { target: { value: expectedData.password } });
       fireEvent.click(signInButton);
     });
 
-    expect(window.location.assign).toHaveBeenCalledWith('/');
+    await waitFor(() => expect(window.location.assign).toBeCalledWith('/'));
   });
 });

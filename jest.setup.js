@@ -8,7 +8,7 @@ const chakraRenderer = ({ children }) => {
 };
 
 const customRender = (ui, options) => {
-  render(ui, {
+  return render(ui, {
     wrapper: chakraRenderer,
     ...options,
   });
