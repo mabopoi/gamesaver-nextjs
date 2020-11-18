@@ -8,3 +8,5 @@ build/*
 .gitignore
 *.log
 npm-debug.log*
+__tests__
+jest.*
