@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Searchbar from '../../components/Searchbar';
 import { Stack, Heading } from '@chakra-ui/core';
 import GameList from '../../components/GameList';
 import UserContext from '../../context/User';
-import router from 'next/router';
 
 const GameSection = () => {
   const user = useContext(UserContext);
@@ -13,12 +12,6 @@ const GameSection = () => {
   const handleChange = (e) => {
     setFilter(e.target.value);
   };
-
-  useEffect(() => {
-    if (!isLogged) {
-      // router.push('login');
-    }
-  }, []);
 
   return (
     <Stack minHeight='70vh' textAlign='center'>

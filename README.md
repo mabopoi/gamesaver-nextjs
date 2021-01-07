@@ -30,4 +30,4 @@ This is a [Next.js](https://nextjs.org/) CRUD project made with MongoDB & Passpo
 
     docker-compose up -d --build
 
-### Then you can open https://localhost:3000 to see the result!
+### Then you can open http://localhost:3000 to see the result!

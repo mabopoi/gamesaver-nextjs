@@ -5,7 +5,6 @@ import { UserProvider } from '../context/User';
 import { useUser } from '../hooks/useUser';
 
 function MyApp({ Component, pageProps }) {
-  //if (typeof process.versions === 'undefined') process.versions = {}; (possible fix for dotenv 3.0.0 incompatibility)
   const user = useUser();
   return (
     <ThemeProvider>
