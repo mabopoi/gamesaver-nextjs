@@ -39,7 +39,7 @@ const Form = (props) => {
             type='password'
             onChange={onChange}
             name='password'
-            placeholder='12345'
+            placeholder='password'
           />
           <FormHelperText> Minimum 8 characters </FormHelperText>
 

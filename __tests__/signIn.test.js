@@ -25,7 +25,7 @@ describe('SignIn process', () => {
     handleSubmit.mockReturnValue(window.location.assign('/'));
     const { getByText, getByPlaceholderText } = render(<Login />);
     const email = getByPlaceholderText('example@test.com');
-    const password = getByPlaceholderText('12345');
+    const password = getByPlaceholderText('password');
     const signInButton = getByText('Done');
 
     act(() => {

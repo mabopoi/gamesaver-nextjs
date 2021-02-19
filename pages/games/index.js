@@ -9,6 +9,16 @@ const GameSection = () => {
   const [filter, setFilter] = useState('');
   const isLogged = Object.keys(user).length > 0;
 
+  const debounce = (fn, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn(...args);
+      }, delay);
+    };
+  };
+
   const handleChange = (e) => {
     setFilter(e.target.value);
   };
@@ -18,7 +28,7 @@ const GameSection = () => {
       {isLogged ? (
         <>
           <Heading marginLeft={4}>{user.name}'s games</Heading>
-          <Searchbar onChange={handleChange} />
+          <Searchbar onChange={debounce(handleChange, 1000)} />
           <GameList filter={filter} />
         </>
       ) : (
