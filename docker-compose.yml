@@ -4,7 +4,7 @@ services:
   app:
     build: .
     environment:
-      -MONGO_URL: 'mongodb://db:27017/gamesaver'
+      MONGO_URL: 'mongodb://db:27017/gamesaver'
     env_file:
       - .env
     ports:
